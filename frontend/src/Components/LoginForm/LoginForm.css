@@ -1,0 +1,109 @@
+.Login {
+  margin: auto;
+  width: 500px;
+}
+
+.Login h1 {
+  font-family: "Gotham", sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+}
+
+.Login .subtitle {
+  font-size: 14px;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+}
+
+.LoginForm {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  border: 1px solid #e7e7e7;
+  padding: 20px;
+  border-radius: 25px;
+  margin: 20px 0;
+}
+
+.LoginForm h2 {
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.LoginForm label {
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px 0;
+}
+
+.LoginForm input,
+.LoginForm button {
+  margin: 6px 0;
+}
+
+.LoginForm input {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: "Gotham", sans-serif;
+  -webkit-border-radius: 36px;
+  -moz-border-radius: 36px;
+  border-radius: 36px;
+  border: 2px solid #e7e7e7;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  outline: 0 !important;
+}
+
+.LoginForm input:focus {
+  border: 2px solid #202020;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.LoginForm button {
+  cursor: pointer;
+
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: "Gotham", sans-serif;
+  -webkit-border-radius: 36px;
+  -moz-border-radius: 36px;
+  border-radius: 36px;
+  font-weight: 500;
+  color: white;
+  background: #202020;
+  border: 2px solid #202020;
+  outline: 0 !important;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.LoginForm button:focus,
+.LoginForm button:hover {
+  background: #fff;
+  color: #202020;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.LoginForm p.footer {
+  font-size: 11px;
+  color: #888888;
+
+  padding: 10px 20px;
+}

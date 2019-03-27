@@ -1,0 +1,130 @@
+.App {
+  width: 100vw;
+}
+
+.Dashboard {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Gotham", sans-serif;
+}
+
+.Dashboard h1,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.buttons {
+  margin: 0 10px;
+}
+
+.buttons button {
+  padding: 10px;
+  font-size: 16px;
+  font-family: 'Gotham', sans-serif!important;
+  background: #181818;
+  outline: 0;
+  color: white;
+  margin-right: 5px;
+  border-radius: 25px;
+  cursor: pointer;
+  border: 2px solid #181818;
+  transition: all 0.2s ease;
+}
+
+.buttons button:hover{
+  background: #888;
+  border: 2px solid #888;
+
+  transition: all 0.2s ease;
+}
+
+.active{
+  background: white!important;
+  color: #43ffb7!important;
+  border: 2px solid #43ffb7!important;
+  transition: all 0.2s ease!important;
+}
+.Dashboard nav {
+  display: flex;
+  /*flex-direction: column;*/
+  justify-content: space-between;
+  padding: 15px;
+  background: #181818;
+  color: white;
+}
+
+.Dashboard nav .brand h1 {
+  font-size: 18px;
+  /*font-weight: 600;*/
+  font-family: "Gotham", sans-serif;
+}
+
+.Dashboard nav ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.Dashboard nav ul li a {
+  text-decoration: none;
+  color: #202020;
+  padding: 0 10px;
+}
+
+.Dashboard .Cameras {
+  display: flex;  
+  flex-direction: column;
+}
+
+
+.Dashboard .CameraPreview {
+  /*margin: ;*/
+  /* height: 80%; */
+  /* width: auto; */
+  flex-grow: 1;
+  margin: 10px;
+  border-radius: 5px;
+  width: 720px;
+  height: 400px
+  /* height: auto; */
+}
+
+
+.Dashboard #log {
+  /*flex-grow: 1;*/
+  /*height: 100%;*/
+  margin: 0;
+  border: 0;
+  width: 500px;
+  /*display: none;*/
+  font-size: 16px;
+  font-family: 'Hermit', sans-serif!important;
+  line-height: 25px;
+  letter-spacing: 1px;
+}
+
+.Dashboard #log:focus{
+  outline: 0;
+}
+
+
+.Dashboard .Logging h1 {
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 20px 0;
+}
+
+.Dashboard .Logging {
+  margin: 15px;
+  flex-grow: 1;
+}
+
+
