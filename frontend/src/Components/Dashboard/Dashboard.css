@@ -39,13 +39,6 @@ p {
   transition: all 0.2s ease;
 }
 
-.buttons button:hover{
-  background: #888;
-  border: 2px solid #888;
-
-  transition: all 0.2s ease;
-}
-
 .active{
   background: white!important;
   color: #43ffb7!important;
@@ -91,8 +84,8 @@ p {
   flex-grow: 1;
   margin: 10px;
   border-radius: 5px;
-  width: 720px;
-  height: 400px
+  width: 820px;
+  height: 460px
   /* height: auto; */
 }
 

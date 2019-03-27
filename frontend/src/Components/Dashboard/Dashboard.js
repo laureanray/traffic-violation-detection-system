@@ -8,18 +8,32 @@ class Dashboard extends Component {
       attached: false,
       logs: '',
       originalFrame: false,
-      bdm: false
+      bdm: false,
+      webcam: true
     };
 
     this.socket = null;
     this.toggleOriginalFrame = this.toggleOriginalFrame.bind(this); 
     this.toggleBdm = this.toggleBdm.bind(this);
+    this.toggleWebCam = this.toggleWebCam.bind(this);
+  }
+
+  toggleWebCam(){
+    this.setState((prevState) => {
+      return {
+        webcam: !prevState.webcam
+      }
+    });
+    this.socket.emit('source', {
+      source: 'webcam'
+    });
   }
 
   toggleBdm(){
     this.setState((prevState) => {
       return {
-        bdm: !prevState.bdm
+        bdm: !prevState.bdm,
+        originalFrame: false,
       }
     });
     this.socket.emit('button', {
@@ -31,7 +45,8 @@ class Dashboard extends Component {
     console.log('toggle');
     this.setState((prevState) => {
       return {
-        originalFrame: !prevState.originalFrame
+        originalFrame: !prevState.originalFrame,
+        bdm: false,
       }
     });
     this.socket.emit('button', {
@@ -86,6 +101,9 @@ class Dashboard extends Component {
             alt="Camera"
           />
             <div className="buttons">
+              <input placeholder="Enter URL" id="source"/>
+              <button onClick={this.toggleurl} className={this.state.url && "active"}> URL </button>
+              <button onClick={this.toggleWebCam} className={this.state.webcam && "active"}> Webcam </button>
               <button onClick={this.toggleOriginalFrame} className={this.state.originalFrame && "active"}> Original Frame </button>
               <button onClick={this.toggleBdm}  className={this.state.bdm && "active"}> Background Difference </button>
             </div>
