@@ -5,28 +5,15 @@ class Dashboard extends Component {
     super(props, context);
 
     this.state = {
-      attached: false,
       logs: '',
       originalFrame: false,
       bdm: false,
-      webcam: true
+      loaded: false
     };
 
     this.socket = null;
     this.toggleOriginalFrame = this.toggleOriginalFrame.bind(this); 
     this.toggleBdm = this.toggleBdm.bind(this);
-    this.toggleWebCam = this.toggleWebCam.bind(this);
-  }
-
-  toggleWebCam(){
-    this.setState((prevState) => {
-      return {
-        webcam: !prevState.webcam
-      }
-    });
-    this.socket.emit('source', {
-      source: 'webcam'
-    });
   }
 
   toggleBdm(){
@@ -55,18 +42,45 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.socket = this.props.io.connect("http://127.0.0.1:3002");
+    console.log(this.props.ip);
+    let that = this;
+    this.socket = this.props.io.connect(`http://${this.props.ip}:3002`, {'reconnection limit': 3000, 'max reconnection attempts': Number.MAX_VALUE, 'connect timeout':7000});
     this.socket.on("connect", function(data) {
       console.log("connected", this.socket);
+      that.setState((prevState) => {
+        // if(prevState.log != data.data){
+          return {
+            loaded: true
+          }
+        // }
+      });
+      });
+
+      this.socket.on('connect_error', (data) => {
+        // console.log('as');
+        that.setState((prevState) => {
+          // if(prevState.log != data.data){
+            return {
+              loaded: false
+            }
+          // }
+        });
       });
 
       // socket.emit('something', {'data': 'hello'});
 
+      // var textarea = document.getElementById('log');
+      // setInterval(function(){
+          // textarea.scrollTop = textarea.scrollHeight;
+      // }, 500);
+
     this.socket.on("log", data => {
       this.setState((prevState) => {
-        return {
-          logs: prevState.logs + data.data + '\n'
-        }
+        // if(prevState.log != data.data){
+          return {
+            logs: prevState.logs + data.data + '\n',
+          }
+        // }
       });
     });
   }
@@ -93,17 +107,14 @@ class Dashboard extends Component {
             </li>
           </ul>
         </nav>
-        <div className="wrapper">
-        <div className="Cameras">
+          { this.state.loaded ?  <div className="wrapper"> 
+          <div className="Cameras">
           <img
-            src="http://127.0.0.1:3002/video_feed"
+            src={`http://${this.props.ip}:3002/video_feed`}
             className="CameraPreview"
             alt="Camera"
           />
             <div className="buttons">
-              <input placeholder="Enter URL" id="source"/>
-              <button onClick={this.toggleurl} className={this.state.url && "active"}> URL </button>
-              <button onClick={this.toggleWebCam} className={this.state.webcam && "active"}> Webcam </button>
               <button onClick={this.toggleOriginalFrame} className={this.state.originalFrame && "active"}> Original Frame </button>
               <button onClick={this.toggleBdm}  className={this.state.bdm && "active"}> Background Difference </button>
             </div>
@@ -112,7 +123,9 @@ class Dashboard extends Component {
             <h1>System Logs</h1> 
             <textarea name="" value={this.state.logs} id="log" cols="30" rows="10" />
           </div>
-      </div>
+      </div> : <div className="loader"> <div className="load_anim"> </div></div>}
+          
+         
          </div> 
     );
   }

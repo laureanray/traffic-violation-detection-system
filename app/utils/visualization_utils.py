@@ -32,6 +32,8 @@ import PIL.ImageDraw as ImageDraw
 import PIL.ImageFont as ImageFont
 import six
 import tensorflow as tf
+from app import socketio
+from app.main.utilities import emit_log
 
 from object_detection.core import standard_fields as fields
 from object_detection.utils import shape_utils
@@ -701,6 +703,7 @@ def visualize_boxes_and_labels_on_image_array(
           if not agnostic_mode:
             if classes[i] in category_index.keys():
               class_name = category_index[classes[i]]['name']
+              emit_log(class_name + ' detected')
             else:
               class_name = 'N/A'
             display_str = str(class_name)

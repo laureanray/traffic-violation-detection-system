@@ -67,7 +67,7 @@ num_detections = detection_graph.get_tensor_by_name('num_detections:0')
 
 
 
-# END
+# ENb
 
 fgbg = cv.createBackgroundSubtractorMOG2()
 cardetetor = CarDetector()
@@ -75,15 +75,9 @@ cardetetor = CarDetector()
 isOriginal = False
 isBdm = False
 
-videoSource = 0
-
-@socketio.on('source')
-def onChange(source):
-    if source['source'] == 'webcam':
-        videoSource = 0
-    else:
-        videoSource = source['source']
-
+videoSource = "/home/laureanray/Desktop/Cctv footage/test3.mp4"
+# videoSource = "http://admin:ygldormpassword@192.168.2.102/video.cgi"
+# videoSource = 0 # default is webcam
 
 @socketio.on('button')
 def onButton(data):
@@ -132,7 +126,7 @@ class Camera(BaseCamera):
             # Acquire frame and expand frame dimensions to have shape: [1, None, None, 3]
             # i.e. a single-column array, where each item in the column has the pixel RGB value
             ret, frame = camera.read()
-            frame = cv2.resize(frame, (512, 288))
+            frame = cv2.resize(frame, (720, 540))
             frame_original = frame
             fgmask = fgbg.apply(frame)
             frame_expanded = np.expand_dims(frame, axis=0)

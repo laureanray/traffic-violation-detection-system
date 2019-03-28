@@ -6,13 +6,6 @@ class Login extends Component {
     super(props, context);
   }
 
-  onLogin(event) {
-    event.preventDefault();
-    console.log("test");
-    // return <Redirect to="/test" />;
-    this.props.history.push("/test");
-  }
-
   render() {
     return (
       <div className="Login">
@@ -31,6 +24,14 @@ class Login extends Component {
             placeholder="Password"
             autoComplete="false"
             name="password"
+          />
+
+          <input
+            type="text"
+            placeholder="IP Address"
+            autoComplete="false"
+            name="ip"
+            id="ip"
           />
           <button> Login </button>
           <p className="footer">Copyright &copy; 2019 TVDS. </p>
